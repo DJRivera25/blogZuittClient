@@ -29,7 +29,7 @@ const BlogDetails = () => {
       setBlog(res.data.data);
     } catch (err) {
       console.error("Failed to fetch blog:", err.message);
-      setError("Failed to load blog details.");
+      setError("Failed to load blog details. Login First");
     } finally {
       setLoading(false);
     }
