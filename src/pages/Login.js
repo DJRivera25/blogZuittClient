@@ -38,7 +38,7 @@ const Login = () => {
         password,
       });
 
-      const token = res.data.data.token; // make sure backend sends this key
+      const token = res.data.data.token;
       if (!token) throw new Error("Token not found in response");
 
       setToken(token);
