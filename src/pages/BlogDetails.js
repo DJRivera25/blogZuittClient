@@ -29,7 +29,7 @@ const BlogDetails = () => {
       setBlog(res.data.data);
     } catch (err) {
       console.error("Failed to fetch blog:", err.message);
-      setError("Failed to load blog details. Login First");
+      setError("Failed to load blog details.");
     } finally {
       setLoading(false);
     }
@@ -43,7 +43,7 @@ const BlogDetails = () => {
       setBlogComments(res.data.data);
     } catch (err) {
       console.error("Failed to fetch blog comments:", err.message);
-      setError("Failed to load blog comments.");
+      setError("Failed to load blog comments. Login First");
     }
   };
 
