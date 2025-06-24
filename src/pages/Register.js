@@ -33,7 +33,7 @@ const Register = () => {
 
     setLoading(true);
     try {
-      await axios.post(`http://localhost:4000/users/register`, {
+      await axios.post(`${process.env.REACT_APP_API_BASEURL}/users/register`, {
         fullName,
         email,
         password,

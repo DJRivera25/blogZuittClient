@@ -25,7 +25,7 @@ const BlogDetails = () => {
 
   const fetchBlog = async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/blogs/${id}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_BASEURL}/blogs/${id}`);
       setBlog(res.data.data);
     } catch (err) {
       console.error("Failed to fetch blog:", err.message);
@@ -37,7 +37,7 @@ const BlogDetails = () => {
 
   const fetchBlogComments = async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/comments/${id}`, {
+      const res = await axios.get(`${process.env.REACT_APP_API_BASEURL}/comments/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBlogComments(res.data.data);
@@ -58,7 +58,7 @@ const BlogDetails = () => {
     try {
       setCommentLoading(true);
       await axios.post(
-        `http://localhost:4000/comments/${id}`,
+        `${process.env.REACT_APP_API_BASEURL}/comments/${id}`,
         { comment: commentInput },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -88,7 +88,7 @@ const BlogDetails = () => {
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:4000/comments/delete/${commentId}`, {
+        await axios.delete(`${process.env.REACT_APP_API_BASEURL}/comments/delete/${commentId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         toast.success("Comment deleted.");
@@ -103,7 +103,7 @@ const BlogDetails = () => {
     if (!editInput.trim()) return toast.error("Comment cannot be empty.");
     try {
       await axios.patch(
-        `http://localhost:4000/comments/update/${commentId}`,
+        `${process.env.REACT_APP_API_BASEURL}/comments/update/${commentId}`,
         { comment: editInput },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -126,7 +126,7 @@ const BlogDetails = () => {
 
     try {
       await axios.patch(
-        `http://localhost:4000/blogs/${id}`,
+        `${process.env.REACT_APP_API_BASEURL}/blogs/${id}`,
         { title: editTitle, content: editContent },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -154,7 +154,7 @@ const BlogDetails = () => {
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:4000/blogs/${id}`, {
+        await axios.delete(`${process.env.REACT_APP_API_BASEURL}/blogs/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         toast.success("Blog deleted.");

@@ -33,7 +33,7 @@ const BlogCard = ({ blogs, fetchBlogs }) => {
   const handleUpdateBlog = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:4000/blogs/${currentBlog.id}`, currentBlog, {
+      await axios.patch(`${process.env.REACT_APP_API_BASEURL}/blogs/${currentBlog.id}`, currentBlog, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -61,7 +61,7 @@ const BlogCard = ({ blogs, fetchBlogs }) => {
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:4000/blogs/${id}`, {
+        await axios.delete(`${process.env.REACT_APP_API_BASEURL}/blogs/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

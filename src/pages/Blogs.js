@@ -18,7 +18,7 @@ const Blog = () => {
 
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/blogs`);
+      const res = await axios.get(`${process.env.REACT_APP_API_BASEURL}/blogs`);
       const response = res.data;
       setBlogs(response.data);
     } catch (error) {
@@ -34,7 +34,7 @@ const Blog = () => {
   const handleAddBlog = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:4000/blogs`, newBlog, {
+      await axios.post(`${process.env.REACT_APP_API_BASEURL}/blogs`, newBlog, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
